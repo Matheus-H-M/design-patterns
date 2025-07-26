@@ -1,4 +1,4 @@
-// Create a constant object named 'settings' with two properties:
+/ Create a constant object named 'settings' with two properties:
 // 'theme' sets the application's theme to "dark"
 // 'language' sets the language to "pt-BR" (Portuguese - Brazil)
 const settings = {
