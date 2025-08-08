@@ -1,6 +1,6 @@
 class ProductBuilder {
     constructor() {
-        this.product = {}; /Initialize an empty product object
+        this.product = {}; //Initialize an empty product object
     }
 
     setName(n) {
