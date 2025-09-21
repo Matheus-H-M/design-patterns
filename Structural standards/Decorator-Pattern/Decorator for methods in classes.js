@@ -1,27 +1,13 @@
-// This is a decorator function that will be used to log method calls
-function logMethod(target, key, descriptor) {
-    // Save the original method so we can call it later
-    const original = descriptor.value;
+// Try to get the value of 'contador' from localStorage.
+// If it doesn't exist (null or undefined), use 0 as the default value.
+let contador = localStorage.getItem('contador') || 0;
 
-    // Modify the method to add logging before calling the original
-    descriptor.value = function (...args) {
-        // Log the method name and arguments
-        console.log(`Chamando ${key} com`, args);
+// The value retrieved from localStorage is a string, so we convert it to a number and increment it by 1.
+contador++;
 
-        // Call the original method with the same arguments and return the result
-        return original.apply(this, args);
-    };
+// Save the updated counter value back to localStorage.
+// This ensures the value persists even after the user reloads or revisits the page.
+localStorage.setItem('contador', contador);
 
-    // Return the updated descriptor
-    return descriptor;
-}
-
-// Define a class named MathTool (Note: "classs" should be "class")
-class MathTool {
-    // Apply the logMethod decorator to the multiply method
-    @logMethod
-    multiply(a, b) {
-        // Return the result of multiplying a and b
-        return a * b;
-    }
-}
+// Display the number of times the page has been visited (according to this browser).
+console.log(`Você visitou esta página ${contador} vezes.`);
