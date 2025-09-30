@@ -1,20 +1,26 @@
-// This function is responsible for rendering a chart.
-// It simply logs the processed data to the console.
-function renderChart(data){
-   console.log("Renderizador gráfico com dados:", data);
-}
+// Cria um objeto contendo os dados que serão enviados para o servidor
+const dados = { nome: "Lucas", idade: 28 };
 
-// This is a facade function that simplifies the process of preparing data for the chart.
-// It receives an array of values and transforms it into a format suitable for the chart.
-function ChartFacade(values){
-   // The values are mapped to an array of objects with x and y coordinates.
-   // 'x' is the index of the value in the array, and 'y' is the value itself.
-   const data = values.map((v, i) => ({ x: i, y: v }));
+// Usa a API fetch para fazer uma requisição HTTP do tipo POST para o endpoint especificado
+fetch("https://exemplo.com/api/usuarios", {
+    // Define o método da requisição como POST (enviar dados)
+    method: "POST",
 
-   // Calls the renderChart function with the processed data.
-   renderChart(data);
-}
+    // Define os cabeçalhos da requisição
+    headers: {
+        // Informa ao servidor que o corpo da requisição está em formato JSON
+        "Content-Type": "application/json"
+    },
 
-// Example usage: calls ChartFacade with an array of values [10, 20, 30].
-// The function will process this data and pass it to renderChart.
-ChartFacade([10, 20, 30]);
+    // Converte o objeto `dados` em uma string JSON para ser enviado no corpo da requisição
+    body: JSON.stringify(dados)
+})
+
+// Quando a resposta chegar, converte-a de JSON para objeto JavaScript
+.then(res => res.json())
+
+// Quando a conversão for concluída, imprime a resposta no console
+.then(resposta => console.log(resposta))
+
+// Captura e trata qualquer erro que ocorra durante a requisição ou conversão
+.catch(erro => console.error("Erro:", erro));
