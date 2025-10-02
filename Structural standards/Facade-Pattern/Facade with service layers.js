@@ -1,12 +1,21 @@
-function validar(email){
+// Function to validate if the email contains "@"
+function validar(email) {
   return email.includes("@");
 }
-function salvar(email){
-  return `Email ${email} salvo com sucesso`;
+
+// Function to simulate saving the email and return a success message
+function salvar(email) {
+  return `Email ${email} salvo com sucesso`; // "Email saved successfully"
 }
-function registrarEmail(email){
-  if(!validar(email)) return "Email inválido";
+
+// Function to register an email:
+// - First validates the email
+// - If invalid, returns "Invalid email"
+// - If valid, saves the email
+function registrarEmail(email) {
+  if (!validar(email)) return "Email inválido"; // "Invalid email"
   return salvar(email);
 }
 
+// Test the function with a sample email
 console.log(registrarEmail("test@email.com"));
