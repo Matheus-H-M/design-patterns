@@ -14,4 +14,4 @@ function carregar() {
 }
 
 // Attempt to start the application
-iniciarApp(); // This function is not defined – will throw an error if run
+iniciarApp() // This function is not defined – will throw an error if run
