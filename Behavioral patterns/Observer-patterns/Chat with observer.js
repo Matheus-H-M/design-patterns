@@ -1,4 +1,4 @@
-// Define a class called User'
+// Define a class called 'User'
 class User {
     // The constructor initializes the object with a 'nome' (name)
     constructor(nome) {
