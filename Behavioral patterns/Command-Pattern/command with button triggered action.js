@@ -1,27 +1,31 @@
-// Class representing a Button
-class Botao {
-    constructor(commando) {
-        // Store the command object that will be executed when the button is clicked
-        this.comando = commando;
-    }
-
-    // Method that simulates clicking the button
-    clicar() {
-        // Execute the command associated with this button
-        this.comando.executar();
+// Class representing a Light
+class Luz {
+    // Method to turn the light on
+    ligar(){
+        console.log("Luz acesa"); // Prints "Light on" to the console (in Portuguese)
     }
 }
 
-// Class representing the action "Open Door"
-class AbrirPorta {
-    // Method that performs the action
-    executar() {
-        console.log("Door opened");
+// Command class responsible for triggering the "turn on light" action
+class ComandoLigarLuz {
+    // Constructor receives a Light object
+    constructor(luz){
+        this.luz = luz; // Stores the light instance
+    }
+
+    // Method that executes the command
+    executar(){
+        this.luz.ligar(); // Calls the light's "turn on" method
     }
 }
 
-// Create a new button and assign it the "Open Door" command
-const botao = new Botao(new AbrirPorta());
+// Creates a new Light instance
+const luz = new Luz();
 
-// Simulate clicking the button, which triggers the command
-botao.clicar();
+// Creates a command that will turn the light on
+const comando = new ComandoLigarLuz(luz);
+
+// Executes the command
+comando.executar();
+
+
