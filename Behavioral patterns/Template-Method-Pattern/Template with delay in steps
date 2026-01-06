@@ -1,0 +1,40 @@
+// Defines a class that represents a process with delays between steps
+class ProcessoComDelay {
+
+    // Main method that runs the process
+    async executar(){
+        // Waits for step 1 to finish
+        await this.etapa1();
+
+        // Waits for step 2 to finish
+        await this.etapa2();
+    }
+
+    // First step of the process
+    async etapa1(){
+        // Logs when step 1 starts
+        console.log("Etapa 1 iniciada");
+
+        // Creates a Promise that resolves after 1 second (1000 ms)
+        // setTimeout is used to introduce a delay
+        await new Promise(r => setTimeout(this.etapa1, 1000));
+
+        // Logs when step 1 finishes
+        console.log("Etapa 1 concluída");
+    }
+
+    // Second step of the process
+    async etapa2(){
+        // Logs when step 2 starts
+        console.log("Etapa 2 iniciada");
+
+        // Creates a Promise that resolves after 500 milliseconds
+        await new Promise(r => setTimeout(r, 500));
+
+        // Logs when step 2 finishes
+        console.log("Etapa 2 concluída");
+    }
+}
+
+// Creates a new instance of the class and starts the process
+new ProcessoComDelay().executar();
